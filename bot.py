@@ -248,9 +248,9 @@ async def point_cmd(interaction: discord.Interaction) -> None:
         )
         return
 
-    await interaction.response.defer(ephemeral=True)
+    await interaction.response.defer()
     add_point(str(interaction.user.id), interaction.user.display_name)
-    await interaction.followup.send("✅ Added one point.", ephemeral=True)
+    await interaction.followup.send("✅ Added one point.")
 
 
 @bot.tree.command(name="scores", description="Post the scoreboard in its configured channel.")

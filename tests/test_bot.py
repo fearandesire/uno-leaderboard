@@ -140,9 +140,9 @@ class PointCommandTests(unittest.IsolatedAsyncioTestCase):
             await bot.bot.tree.get_command("point").callback(interaction)
 
         add_point.assert_called_once_with("123", "UNO player")
-        self.assertEqual(interaction.response.calls[0], ("defer", {"ephemeral": True}))
+        self.assertEqual(interaction.response.calls[0], ("defer", {}))
         self.assertEqual(interaction.followup.calls[0][0], "✅ Added one point.")
-        self.assertTrue(interaction.followup.calls[0][1]["ephemeral"])
+        self.assertFalse(interaction.followup.calls[0][1].get("ephemeral", False))
 
 
 class AdminCommandTests(unittest.IsolatedAsyncioTestCase):
