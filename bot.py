@@ -243,9 +243,7 @@ async def help_cmd(interaction: discord.Interaction) -> None:
 async def point_cmd(interaction: discord.Interaction) -> None:
     """Add one point for the caller in the configured score channel."""
     if not is_score_channel(interaction):
-        await interaction.response.send_message(
-            "Use /point in the configured score channel.", ephemeral=True
-        )
+        await interaction.response.send_message("Use /point in the configured score channel.")
         return
 
     await interaction.response.defer()
