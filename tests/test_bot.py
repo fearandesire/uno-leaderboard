@@ -130,7 +130,7 @@ class PointCommandTests(unittest.IsolatedAsyncioTestCase):
 
         add_point.assert_not_called()
         self.assertEqual(interaction.response.calls[0][0], "send_message")
-        self.assertTrue(interaction.response.calls[0][2]["ephemeral"])
+        self.assertFalse(interaction.response.calls[0][2].get("ephemeral", False))
 
     async def test_point_updates_callers_stored_id_and_display_name(self):
         user = SimpleNamespace(id=123, display_name="UNO player")
